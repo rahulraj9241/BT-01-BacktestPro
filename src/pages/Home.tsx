@@ -1,11 +1,12 @@
+import Layout from "../components/Layout";
+
 function Home() {
-      return (
-          <div>
-                <h1>📈 BacktestPro</h1>
-                      <p>Professional Forex & XAUUSD Backtesting Software</p>
-                          </div>
-                            );
-                            }
+  return (
+      <Layout>
+            <h1>📈 Dashboard</h1>
+                  <p>Welcome to BacktestPro.</p>
+                      </Layout>
+                        );
+                        }
 
-                            export default Home;
-
+                        export default Home;
