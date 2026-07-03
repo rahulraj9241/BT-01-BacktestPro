@@ -1,41 +1,32 @@
-function Sidebar() {
-      const menu = [
-          "🏠 Dashboard",
-              "📥 Import CSV",
-                  "▶️ Replay",
-                      "💹 Trades",
-                          "📊 Statistics",
-                              "⚙️ Settings",
-                                ];
+const menuItems = [
+      { icon: "🏠", name: "Dashboard" },
+        { icon: "📥", name: "Import CSV" },
+          { icon: "▶️", name: "Replay" },
+            { icon: "💹", name: "Trades" },
+              { icon: "📊", name: "Statistics" },
+                { icon: "⚙️", name: "Settings" },
+                ];
 
-                                  return (
-                                      <aside
-                                            style={{
-                                                    width: "240px",
-                                                            background: "#1f2937",
-                                                                    color: "white",
-                                                                            padding: "20px",
-                                                                                    minHeight: "calc(100vh - 70px)",
-                                                                                          }}
-                                                                                              >
-                                                                                                    <h3 style={{ marginBottom: "20px" }}>Menu</h3>
+                function Sidebar() {
+                  return (
+                      <aside className="w-64 min-h-screen bg-slate-900 border-r border-slate-700 text-white">
+                            <div className="p-6 text-xl font-bold border-b border-slate-700">
+                                    📈 BacktestPro
+                                          </div>
 
-                                                                                                          {menu.map((item) => (
-                                                                                                                  <div
-                                                                                                                            key={item}
-                                                                                                                                      style={{
-                                                                                                                                                  padding: "12px",
-                                                                                                                                                              marginBottom: "10px",
-                                                                                                                                                                          borderRadius: "8px",
-                                                                                                                                                                                      cursor: "pointer",
-                                                                                                                                                                                                  background: "#374151",
-                                                                                                                                                                                                            }}
-                                                                                                                                                                                                                    >
-                                                                                                                                                                                                                              {item}
-                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                            ))}
-                                                                                                                                                                                                                                                </aside>
-                                                                                                                                                                                                                                                  );
-                                                                                                                                                                                                                                                  }
+                                                <nav className="p-4">
+                                                        {menuItems.map((item) => (
+                                                                  <button
+                                                                              key={item.name}
+                                                                                          className="w-full flex items-center gap-3 px-4 py-3 mb-2 rounded-lg hover:bg-slate-800 transition text-left"
+                                                                                                    >
+                                                                                                                <span>{item.icon}</span>
+                                                                                                                            <span>{item.name}</span>
+                                                                                                                                      </button>
+                                                                                                                                              ))}
+                                                                                                                                                    </nav>
+                                                                                                                                                        </aside>
+                                                                                                                                                          );
+                                                                                                                                                          }
 
-                                                                                                                                                                                                                                                  export default Sidebar;
+                                                                                                                                                          export default Sidebar;
