@@ -1,3 +1,4 @@
+import type { UTCTimestamp } from "lightweight-charts";
 import type { Candle } from "../types/Candle";
 
 export function parseCSV(text: string): Candle[] {
@@ -10,7 +11,7 @@ export function parseCSV(text: string): Candle[] {
                       const [time, open, high, low, close, volume] = line.split(",");
 
                             return {
-                                    time,
+                                    time: Math.floor(new Date(time).getTime() / 1000) as UTCTimestamp,
                                             open: Number(open),
                                                     high: Number(high),
                                                             low: Number(low),
@@ -19,3 +20,4 @@ export function parseCSV(text: string): Candle[] {
                                                                                   };
                                                                                       });
                                                                                       }
+                                                                                      

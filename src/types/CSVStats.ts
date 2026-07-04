@@ -1,8 +1,10 @@
+import type { UTCTimestamp } from "lightweight-charts";
+
 export interface CSVStats {
-      totalCandles: number;
-        firstCandle: string;
-          lastCandle: string;
-            highestHigh: number;
-              lowestLow: number;
-                averageVolume: number;
-                }
+  totalCandles: number;
+    firstCandle: UTCTimestamp;
+      lastCandle: UTCTimestamp;
+        highestHigh: number;
+          lowestLow: number;
+            averageVolume: number;
+            }

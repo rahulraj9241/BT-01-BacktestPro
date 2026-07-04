@@ -1,3 +1,5 @@
+import type { UTCTimestamp } from "lightweight-charts";
+
 import type { Candle } from "../types/Candle";
 import type { CSVStats } from "../types/CSVStats";
 
@@ -5,8 +7,8 @@ export function calculateStats(candles: Candle[]): CSVStats {
   if (candles.length === 0) {
       return {
             totalCandles: 0,
-                  firstCandle: "",
-                        lastCandle: "",
+                  firstCandle: 0 as UTCTimestamp,
+                        lastCandle: 0 as UTCTimestamp,
                               highestHigh: 0,
                                     lowestLow: 0,
                                           averageVolume: 0,
