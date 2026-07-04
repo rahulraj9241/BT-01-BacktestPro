@@ -1,27 +1,19 @@
 import Layout from "../components/Layout";
-import StatsCard from "../components/StatsCard";
+
+import DashboardHeader from "../components/dashboard/DashboardHeader";
+import StatsSection from "../components/dashboard/StatsSection";
+import QuickActions from "../components/dashboard/QuickActions";
+import RecentSessions from "../components/dashboard/RecentSessions";
 
 function Home() {
   return (
-      <Layout>
-            <h1>📈 Dashboard</h1>
-                  <p>Welcome to BacktestPro.</p>
+    <Layout>
+      <DashboardHeader />
+      <StatsSection />
+      <QuickActions />
+      <RecentSessions />
+    </Layout>
+  );
+}
 
-                        <div
-                                style={{
-                                          display: "flex",
-                                                    gap: "20px",
-                                                              flexWrap: "wrap",
-                                                                        marginTop: "30px",
-                                                                                }}
-                                                                                      >
-                                                                                              <StatsCard title="Balance" value="$10,000" />
-                                                                                                      <StatsCard title="Win Rate" value="72%" />
-                                                                                                              <StatsCard title="Trades" value="145" />
-                                                                                                                      <StatsCard title="Session" value="XAUUSD M5" />
-                                                                                                                            </div>
-                                                                                                                                </Layout>
-                                                                                                                                  );
-                                                                                                                                  }
-
-                                                                                                                                  export default Home;
+export default Home;

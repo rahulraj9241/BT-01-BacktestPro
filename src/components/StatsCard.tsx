@@ -1,25 +1,18 @@
+import Card from "./ui/Card";
+
 type StatsCardProps = {
-      title: string;
-        value: string;
-        };
+  title: string;
+  value: string;
+};
 
-        function StatsCard({ title, value }: StatsCardProps) {
-          return (
-              <div
-                    style={{
-                            background: "#1f2937",
-                                    borderRadius: "12px",
-                                            padding: "20px",
-                                                    color: "white",
-                                                            minWidth: "200px",
-                                                                    border: "1px solid #374151",
-                                                                          }}
-                                                                              >
-                                                                                    <h4 style={{ margin: 0, color: "#9ca3af" }}>{title}</h4>
+function StatsCard({ title, value }: StatsCardProps) {
+  return (
+    <Card>
+      <h4 className="text-slate-400 text-sm font-medium">{title}</h4>
 
-                                                                                          <h2 style={{ marginTop: "12px" }}>{value}</h2>
-                                                                                              </div>
-                                                                                                );
-                                                                                                }
+      <h2 className="text-white text-3xl font-bold mt-3">{value}</h2>
+    </Card>
+  );
+}
 
-                                                                                                export default StatsCard;
+export default StatsCard;
