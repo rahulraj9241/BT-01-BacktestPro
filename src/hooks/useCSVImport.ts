@@ -22,13 +22,11 @@ export function useCSVImport() {
                                   const text = e.target?.result as string;
 
                                         const lines = text.split(/\r?\n/);
-
                                               setTotalLines(lines.length);
 
                                                     const parsedCandles = parseCSV(text);
 
                                                           setCandles(parsedCandles);
-
                                                                 setStats(calculateStats(parsedCandles));
 
                                                                       setPreview(lines.slice(0, 5).join("\n"));
