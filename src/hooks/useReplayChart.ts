@@ -6,45 +6,49 @@ import { useReplayMode } from "../context/ReplayModeContext";
 
 export function useReplayChart() {
   const { candles } = useMarketData();
-
     const { currentIndex } = useReplay();
-
       const { replayMode } = useReplayMode();
 
-        const visibleCandles = useMemo(() => {
-            if (!replayMode) {
-                  return candles;
-                      }
+        const totalCandles = candles.length;
 
-                          return candles.slice(0, currentIndex + 1);
-                            }, [
-                                candles,
-                                    currentIndex,
-                                        replayMode,
-                                          ]);
+          const visibleCandles = useMemo(() => {
+              if (totalCandles === 0) return [];
 
-                                            const totalCandles = candles.length;
+                  if (!replayMode) {
+                        return candles;
+                            }
 
-                                              const progress =
-                                                  totalCandles === 0
-                                                        ? 0
-                                                              : ((currentIndex + 1) / totalCandles) * 100;
+                                return candles.slice(0, currentIndex + 1);
+                                  }, [
+                                      candles,
+                                          currentIndex,
+                                              replayMode,
+                                                  totalCandles,
+                                                    ]);
 
-                                                                const hasNext =
-                                                                    currentIndex < totalCandles - 1;
+                                                      const progress = useMemo(() => {
+                                                          if (totalCandles === 0) return 0;
 
-                                                                      const hasPrevious =
-                                                                          currentIndex > 0;
+                                                              return ((currentIndex + 1) / totalCandles) * 100;
+                                                                }, [
+                                                                    currentIndex,
+                                                                        totalCandles,
+                                                                          ]);
 
-                                                                            return {
-                                                                                visibleCandles,
+                                                                            const hasNext = currentIndex < totalCandles - 1;
+                                                                              const hasPrevious = currentIndex > 0;
 
-                                                                                    totalCandles,
+                                                                                const currentCandle =
+                                                                                    visibleCandles.length > 0
+                                                                                          ? visibleCandles[visibleCandles.length - 1]
+                                                                                                : null;
 
-                                                                                        progress,
-
-                                                                                            hasNext,
-
-                                                                                                hasPrevious,
-                                                                                                  };
-                                                                                                  }
+                                                                                                  return {
+                                                                                                      visibleCandles,
+                                                                                                          currentCandle,
+                                                                                                              totalCandles,
+                                                                                                                  progress,
+                                                                                                                      hasNext,
+                                                                                                                          hasPrevious,
+                                                                                                                            };
+                                                                                                                            }

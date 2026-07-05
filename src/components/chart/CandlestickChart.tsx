@@ -5,7 +5,6 @@ import { useReplayChart } from "../../hooks/useReplayChart";
 
 function CandlestickChart() {
   const { containerRef, seriesRef } = useChart();
-
     const { visibleCandles } = useReplayChart();
 
       const previousLength = useRef(0);
@@ -21,28 +20,26 @@ function CandlestickChart() {
                                               close: candle.close,
                                                   }));
 
-                                                      // Reset ya CSV import hone par
-                                                          if (chartData.length < previousLength.current) {
-                                                                seriesRef.current.setData(chartData);
-                                                                    }
-                                                                        // Replay ke dauran nayi candle add hui
-                                                                            else if (chartData.length === previousLength.current + 1) {
+                                                      if (chartData.length < previousLength.current) {
+                                                            // Reset ya CSV import
+                                                                  seriesRef.current.setData(chartData);
+                                                                      } else if (chartData.length === previousLength.current + 1) {
+                                                                            // Replay me ek nayi candle
                                                                                   seriesRef.current.update(chartData[chartData.length - 1]);
-                                                                                      }
-                                                                                          // Initial load
-                                                                                              else {
-                                                                                                    seriesRef.current.setData(chartData);
-                                                                                                        }
+                                                                                      } else {
+                                                                                            // Initial load
+                                                                                                  seriesRef.current.setData(chartData);
+                                                                                                      }
 
-                                                                                                            previousLength.current = chartData.length;
-                                                                                                              }, [visibleCandles]);
+                                                                                                          previousLength.current = chartData.length;
+                                                                                                            }, [visibleCandles, seriesRef]);
 
-                                                                                                                return (
-                                                                                                                    <div
-                                                                                                                          ref={containerRef}
-                                                                                                                                className="w-full h-[500px] rounded-xl border border-slate-700"
-                                                                                                                                    />
-                                                                                                                                      );
-                                                                                                                                      }
+                                                                                                              return (
+                                                                                                                  <div
+                                                                                                                        ref={containerRef}
+                                                                                                                              className="w-full h-[500px] rounded-xl border border-slate-700"
+                                                                                                                                  />
+                                                                                                                                    );
+                                                                                                                                    }
 
-                                                                                                                                      export default CandlestickChart;
+                                                                                                                                    export default CandlestickChart;

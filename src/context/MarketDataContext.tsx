@@ -16,9 +16,9 @@ import {
                   setStats: React.Dispatch<React.SetStateAction<CSVStats | null>>;
                   };
 
-                  const MarketDataContext = createContext<MarketDataContextType | undefined>(
-                    undefined
-                    );
+                  const MarketDataContext = createContext<
+                    MarketDataContextType | undefined
+                    >(undefined);
 
                     export function MarketDataProvider({
                       children,
@@ -53,3 +53,4 @@ import {
 
                                                                                                                     return context;
                                                                                                                     }
+                                                                                                                    
